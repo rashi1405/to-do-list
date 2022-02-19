@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+
+    <style>
+       body{
+           text-align:center;
+           background-color: black;
+           font-size: 25px;
+       }
+
+        .container{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            width: 100%;
+        }
+        h1{
+            margin: 40px 0 0 ;
+            font-size: 3rem;
+            color: red;
+        }
+
+        #box{
+               height: 50px;
+                width:40%;
+        }
+
+        #bttn{
+            width:20%;
+            height: 35px;
+            background-color: red;
+            font-weight: bold;
+            border: none;
+            box-shadow: 1px 1px white;
+        }
+
+         #items{
+             color: bisque;
+             margin: 50px 0;
+             list-style-type: none;
+             font-size: 30px ;
+         }
+         
+        lottie-player{
+             display: block;
+             margin:0 auto;
+             width: 70%;
+             height: 300px;
+        }
+  
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1> To-Do List </h1>
+        <br>
+
+        <div>
+            <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+            <lottie-player src="https://assets10.lottiefiles.com/private_files/lf30_fvqxryww.json"  background="transparent"  speed="1"  loop  autoplay></lottie-player>
+        </div>
+
+        <div class="row"> 
+            <form>
+                <div class="input-grp">
+                    <input type="text" placeholder="Add item" id="box">
+                </div>
+                <br>
+                <div class="form-grp">
+                    <input type="button" value="add" id="bttn" onclick="add_item()">
+                </div>
+            </form>    
+        </div>
+
+        <div class="row">
+           <ul id="items"></ul>
+        </div>
+
+    </div>
+    
+    <script type="text/javascript">
+        function add_item(){
+            let items = document.getElementById("box");
+            let lists = document.getElementById("items");
+       
+            if(items.value!=""){
+                let make_li = document.createElement("li");
+                make_li.appendChild(document.createTextNode(items.value));
+                lists.appendChild(make_li);
+                items.value ="";
+
+                make_li.onclick = function(){
+                    this.parentNode.removeChild(this);
+                }
+            }
+
+            else {
+                alert("please add a value to items");
+            }
+        }
+    </script>
+
+</body>
+</html>
